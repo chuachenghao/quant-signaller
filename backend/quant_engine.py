@@ -17,10 +17,10 @@ FEATURES = [
 ]
 
 def download_data(ticker, start):
-    data = yf.download(ticker, start=start, progress = False)
+    data = yf.download(ticker, start=start, progress=False)
 
     if data.empty:
-        raise ValueError("No data found. Check ticker.")
+        raise ValueError("No data found for ticker")
     
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = data.columns.get_level_values(0)
@@ -47,7 +47,6 @@ def add_features(data):
     df["volume_change"] = df["Volume"].pct_change()
 
     delta = df["Close"].diff()
-
     gain = delta.clip(lower=0)
     loss = -delta.clip(upper=0)
 
@@ -58,7 +57,6 @@ def add_features(data):
     df["rsi"] = 100 - (100 / (1 + rs))
 
     df["future_return"] = df["Close"].pct_change().shift(-1)
-
     df["target"] = (df["future_return"] > 0).astype(float)
 
     df = df.dropna(subset=FEATURES)
@@ -94,7 +92,6 @@ def backtest(test_df, buy_threshold, sell_threshold):
     df["position"] = positions
 
     transaction_cost = 0.001
-
     df["trade"] = df["position"].diff().abs().fillna(0)
 
     df["strategy_return"] = (
@@ -124,7 +121,7 @@ def max_drawdown(cumulative_returns):
 
 def run_model(
     ticker="SPY",
-    start="2015-01-01",
+    start="2020-01-01",
     buy_threshold=0.55,
     sell_threshold=0.45
 ):
@@ -134,7 +131,7 @@ def run_model(
     labelled_df = df.dropna(subset=["future_return", "target"])
 
     if len(labelled_df) < 200:
-        raise ValueError("Not enough data. Choose an earlier start date.")
+        raise ValueError("Not enough data")
 
     split_index = int(len(labelled_df) * 0.7)
 

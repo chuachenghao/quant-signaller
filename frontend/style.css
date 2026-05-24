@@ -1,0 +1,281 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #eef2f7;
+  color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.topbar h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  letter-spacing: -0.04em;
+}
+
+.topbar p {
+  margin: 0;
+  color: #475569;
+  max-width: 640px;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d2d8e0;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+}
+
+.input-panel {
+  margin-bottom: 24px;
+}
+
+.form-row {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-row label {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.form-row input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.form-row.thresholds {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+button#submitButton {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button#submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+button#submitButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.status-row {
+  margin-top: 16px;
+  min-height: 24px;
+  color: #334155;
+}
+
+.status-row[data-type="error"] {
+  color: #b91c1c;
+}
+
+.status-row[data-type="success"] {
+  color: #047857;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.result-header h2 {
+  margin: 0;
+}
+
+.result-header .muted {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge[data-recommendation="BUY"] {
+  background: #16a34a;
+}
+
+.badge[data-recommendation="SELL"] {
+  background: #dc2626;
+}
+
+.badge[data-recommendation="HOLD"] {
+  background: #0f172a;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.summary-grid div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px 16px;
+}
+
+.summary-grid span {
+  display: block;
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.summary-grid strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.history-panel {
+  margin-top: 8px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.history-header h3 {
+  margin: 0;
+}
+
+.history-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.signal-list {
+  display: grid;
+  gap: 12px;
+}
+
+.signal-item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.signal-date {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.signal-details {
+  display: grid;
+  gap: 4px;
+}
+
+.signal-details strong {
+  font-size: 0.98rem;
+}
+
+.signal-role {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.empty-state {
+  color: #475569;
+  font-size: 0.98rem;
+  padding: 18px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  text-align: center;
+}
+
+footer {
+  margin-top: 20px;
+  color: #64748b;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer code {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+  padding: 3px 7px;
+}
+
+@media (max-width: 720px) {
+  .signal-item {
+    grid-template-columns: 1fr;
+  }
+
+  .result-header,
+  .history-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

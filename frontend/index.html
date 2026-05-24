@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quant Signaller - Trading Signals Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="app-shell">
+            <div class="topbar">
+                <div>
+                    <h1>Quant Signaller</h1>
+                    <p>Get trading recommendations based on machine learning analysis</p>
+                </div>
+            </div>
+
+            <div class="panel input-panel">
+                <form id="recommendationForm">
+                    <div class="form-row">
+                        <label>Ticker Symbol</label>
+                        <input type="text" name="ticker" placeholder="e.g., SPY" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Start Date</label>
+                        <input type="date" name="start" value="2020-01-01" required>
+                    </div>
+
+                    <div class="form-row thresholds">
+                        <div class="form-row">
+                            <label>Buy Threshold</label>
+                            <input type="number" name="buy_threshold" value="0.55" min="0" max="1" step="0.01" required>
+                        </div>
+                        <div class="form-row">
+                            <label>Sell Threshold</label>
+                            <input type="number" name="sell_threshold" value="0.45" min="0" max="1" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitButton">Get recommendation</button>
+                    <div class="status-row" id="statusMessage"></div>
+                </form>
+            </div>
+
+            <div class="panel" id="resultPanel" hidden>
+                <div class="result-header">
+                    <div>
+                        <h2 id="resultTicker">SPY</h2>
+                        <p class="muted">Latest Close: <strong id="resultClose">$0.00</strong></p>
+                    </div>
+                    <div class="badge" id="recommendationBadge">HOLD</div>
+                </div>
+
+                <div class="summary-grid">
+                    <div>
+                        <span>Probability Up</span>
+                        <strong id="resultProbability">0.0000</strong>
+                    </div>
+                    <div>
+                        <span>Model Accuracy</span>
+                        <strong id="resultAccuracy">0.0000</strong>
+                    </div>
+                    <div>
+                        <span>Strategy Return</span>
+                        <strong id="resultStrategy">0.0000</strong>
+                    </div>
+                    <div>
+                        <span>Buy & Hold Return</span>
+                        <strong id="resultBuyHold">0.0000</strong>
+                    </div>
+                    <div>
+                        <span>Sharpe Ratio</span>
+                        <strong id="resultSharpe">0.0000</strong>
+                    </div>
+                    <div>
+                        <span>Max Drawdown</span>
+                        <strong id="resultDrawdown">0.0000</strong>
+                    </div>
+                </div>
+
+                <div class="history-panel">
+                    <div class="history-header">
+                        <h3>Recent Signals</h3>
+                        <p>Last 10 days</p>
+                    </div>
+                    <div class="signal-list" id="recentSignals"></div>
+                </div>
+            </div>
+
+            <footer>
+                <p>Backend API: <code>http://localhost:5000/api/recommend</code></p>
+            </footer>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
