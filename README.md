@@ -38,7 +38,7 @@ From the backend directory:
 python app.py
 ```
 
-The server will run on `http://localhost:5000`
+The server will run on `http://localhost:5001`
 
 ### Open the Frontend
 

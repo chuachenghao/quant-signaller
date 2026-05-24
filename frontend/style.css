@@ -82,6 +82,12 @@ input {
   color: #0f172a;
 }
 
+.form-row input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+
 .form-row.thresholds {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;

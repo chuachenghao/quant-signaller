@@ -18,8 +18,43 @@
             <div class="panel input-panel">
                 <form id="recommendationForm">
                     <div class="form-row">
-                        <label>Ticker Symbol</label>
-                        <input type="text" name="ticker" placeholder="e.g., SPY" required>
+                        <label for="tickerInput">Ticker Symbol</label>
+                        <input
+                            type="text"
+                            id="tickerInput"
+                            name="ticker"
+                            placeholder="e.g., SPY"
+                            list="tickerSuggestions"
+                            required
+                        >
+                        <datalist id="tickerSuggestions">
+                            <option value="SPY">SPDR S&P 500 ETF Trust</option>
+                            <option value="QQQ">Invesco QQQ Trust</option>
+                            <option value="DIA">SPDR Dow Jones Industrial Average ETF</option>
+                            <option value="IWM">iShares Russell 2000 ETF</option>
+                            <option value="VTI">Vanguard Total Stock Market ETF</option>
+                            <option value="VOO">Vanguard S&P 500 ETF</option>
+                            <option value="AAPL">Apple</option>
+                            <option value="MSFT">Microsoft</option>
+                            <option value="NVDA">NVIDIA</option>
+                            <option value="AMZN">Amazon</option>
+                            <option value="GOOGL">Alphabet Class A</option>
+                            <option value="GOOG">Alphabet Class C</option>
+                            <option value="META">Meta Platforms</option>
+                            <option value="TSLA">Tesla</option>
+                            <option value="AMD">Advanced Micro Devices</option>
+                            <option value="NFLX">Netflix</option>
+                            <option value="JPM">JPMorgan Chase</option>
+                            <option value="V">Visa</option>
+                            <option value="UNH">UnitedHealth Group</option>
+                            <option value="XOM">Exxon Mobil</option>
+                            <option value="COST">Costco Wholesale</option>
+                            <option value="WMT">Walmart</option>
+                            <option value="DIS">Walt Disney</option>
+                            <option value="BA">Boeing</option>
+                            <option value="GLD">SPDR Gold Shares</option>
+                            <option value="TLT">iShares 20+ Year Treasury Bond ETF</option>
+                        </datalist>
                     </div>
 
                     <div class="form-row">
@@ -89,10 +124,9 @@
             </div>
 
             <footer>
-                <p>Backend API: <code>http://localhost:5000/api/recommend</code></p>
+                <p>Backend API: <code>http://localhost:5001/api/recommend</code></p>
             </footer>
         </div>
-
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </body>
 </html>
